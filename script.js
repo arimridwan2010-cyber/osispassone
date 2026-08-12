@@ -1,3 +1,81 @@
+/* ============================================================
+   KELUARGA OSIS ASTROPHIA — SMA PASUNDAN 1 CIANJUR
+   JavaScript utama
+   ============================================================ */
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    // ---------- ELEMEN DOM ----------
+    const navbar = document.getElementById('navbar');
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const backToTop = document.getElementById('backToTop');
+    const sections = document.querySelectorAll('section[id]');
+
+    // ---------- NAVIGASI MOBILE ----------
+    // Buka/tutup menu saat tombol hamburger diklik
+    navToggle.addEventListener('click', function() {
+        navMenu.classList.toggle('open');
+        const hamburgers = navToggle.querySelectorAll('.hamburger');
+        hamburgers.forEach(h => h.classList.toggle('open'));
+    });
+
+    // Tutup menu saat salah satu tautan navigasi diklik
+    navLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+            navMenu.classList.remove('open');
+            const hamburgers = navToggle.querySelectorAll('.hamburger');
+            hamburgers.forEach(h => h.classList.remove('open'));
+        });
+    });
+
+    // ---------- EFEK SCROLL PADA NAVBAR ----------
+    function handleScroll() {
+        const scrollY = window.scrollY;
+
+        // Tambah/hapus class scrolled pada navbar
+        if (scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+
+        // Tampilkan/sembunyikan tombol back to top
+        if (scrollY > 500) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+
+        // Highlight tautan navigasi aktif berdasarkan posisi scroll
+        let currentSection = '';
+        sections.forEach(function(section) {
+            const sectionTop = section.offsetTop - 100;
+            const sectionHeight = section.offsetHeight;
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                currentSection = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(function(link) {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + currentSection) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', handleScroll);
+
+    // ---------- TOMBOL KEMBALI KE ATAS ----------
+    backToTop.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
     // ---------- ANIMASI SCROLL REVEAL ----------
     // Tambahkan class 'reveal' pada elemen yang ingin dianimasikan
     const revealElements = document.querySelectorAll(
