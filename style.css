@@ -1,0 +1,1310 @@
+/* ============================================================
+   KELUARGA OSIS ASTROPHIA — SMA PASUNDAN 1 CIANJUR
+   Stylesheet utama
+   Warna Resmi:
+   • Merah Marun Gelap   : #6E0E28
+   • Emas / Kuning       : #FFD700
+   • Putih Krem          : #FFF8E8
+   • Biru Sekolah        : #003399
+   ============================================================ */
+
+/* ---------- RESET & BASE ---------- */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #2d2d2d;
+    background: #FFF8E8;
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+/* ---------- VARIABEL ---------- */
+:root {
+    --maroon: #6E0E28;
+    --maroon-dark: #4a0818;
+    --gold: #FFD700;
+    --gold-light: #FFE44D;
+    --cream: #FFF8E8;
+    --cream-dark: #F5ECD0;
+    --blue: #003399;
+    --blue-light: #1a4dbf;
+    --text-dark: #1a1a1a;
+    --text-body: #3d3d3d;
+    --text-muted: #6b6b6b;
+    --shadow-sm: 0 2px 8px rgba(110, 14, 40, 0.08);
+    --shadow-md: 0 8px 30px rgba(110, 14, 40, 0.12);
+    --shadow-lg: 0 20px 60px rgba(110, 14, 40, 0.15);
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 22px;
+    --radius-xl: 30px;
+}
+
+/* ---------- UTILITAS ---------- */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.section {
+    padding: 100px 0;
+    position: relative;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header.light .section-tag,
+.section-header.light .section-title {
+    color: #fff;
+}
+
+.section-header.light .section-line {
+    background: var(--gold);
+}
+
+.section-tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--maroon);
+    margin-bottom: 12px;
+    padding: 6px 18px;
+    border: 1.5px solid var(--maroon);
+    border-radius: 50px;
+}
+
+.section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.section-line {
+    width: 60px;
+    height: 4px;
+    background: var(--gold);
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+/* ---------- NAVIGASI ---------- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(110, 14, 40, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.4s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(110, 14, 40, 0.98);
+    box-shadow: var(--shadow-md);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.nav-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--gold);
+}
+
+.nav-brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-brand-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+}
+
+.nav-brand-sub {
+    font-size: 0.72rem;
+    color: var(--gold);
+    letter-spacing: 0.5px;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.nav-link {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+    padding: 8px 16px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--gold);
+    background: rgba(255, 215, 0, 0.1);
+}
+
+/* Tombol hamburger */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1001;
+}
+
+.hamburger {
+    display: block;
+    width: 26px;
+    height: 2.5px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* ---------- HERO / BERANDA ---------- */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 120px 24px 80px;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #6E0E28 0%, #4a0818 40%, #8B1A3A 70%, #B8860B 100%);
+    z-index: -2;
+}
+
+.hero-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFD700' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.6;
+}
+
+.hero-bg::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(to top, var(--cream), transparent);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+}
+
+.hero-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.hero-logo-main {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--gold);
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.25), 0 10px 40px rgba(0,0,0,0.3);
+    animation: float 6s ease-in-out infinite;
+}
+
+.hero-logo-school {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255,255,255,0.4);
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: float 6s ease-in-out infinite 1s;
+}
+
+.hero-logo-divider {
+    width: 2px;
+    height: 80px;
+    background: rgba(255, 215, 0, 0.4);
+    border-radius: 1px;
+}
+
+.hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.85);
+    font-weight: 400;
+    margin-bottom: 28px;
+    letter-spacing: 1px;
+}
+
+.hero-motto {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.motto-text {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 8px;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+    padding: 10px 30px;
+    border: 2px solid var(--gold);
+    border-radius: 50px;
+    display: inline-block;
+}
+
+.hero-period {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 36px;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+}
+
+.period-roman {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+}
+
+.period-separator {
+    color: var(--gold);
+}
+
+.hero-cta {
+    display: inline-block;
+    padding: 14px 36px;
+    background: var(--gold);
+    color: var(--maroon-dark);
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-radius: 50px;
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.35);
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.hero-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(255, 215, 0, 0.5);
+    background: var(--gold-light);
+}
+
+.hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.scroll-line {
+    display: block;
+    width: 1.5px;
+    height: 50px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+    50% { opacity: 1; transform: scaleY(1); }
+}
+
+/* ---------- PROFIL SEKOLAH ---------- */
+.section-school {
+    background: var(--cream);
+}
+
+.school-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.school-visual {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.school-logo-wrap {
+    position: relative;
+    width: 280px;
+    height: 280px;
+}
+
+.school-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+    background: #fff;
+    padding: 20px;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    z-index: 1;
+}
+
+.school-logo-ring {
+    position: absolute;
+    inset: -10px;
+    border: 3px solid var(--gold);
+    border-radius: 50%;
+    animation: rotateRing 20s linear infinite;
+}
+
+.school-logo-ring::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 2px dashed var(--maroon);
+    border-radius: 50%;
+    opacity: 0.3;
+}
+
+@keyframes rotateRing {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.school-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.info-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: #fff;
+    padding: 20px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(110, 14, 40, 0.06);
+}
+
+.info-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(110, 14, 40, 0.12);
+}
+
+.info-icon {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--maroon);
+    border-radius: 12px;
+    color: var(--gold);
+}
+
+.info-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.info-body h4 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--maroon);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.info-body p {
+    font-size: 0.88rem;
+    color: var(--text-body);
+    line-height: 1.5;
+}
+
+.info-body a {
+    color: var(--blue);
+    font-weight: 500;
+}
+
+.info-body a:hover {
+    text-decoration: underline;
+}
+
+.school-quote {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+    color: #fff;
+    padding: 28px 32px;
+    border-radius: var(--radius-md);
+    position: relative;
+    margin-top: 8px;
+}
+
+.school-quote::before {
+    content: '"';
+    font-family: 'Cinzel', serif;
+    font-size: 4rem;
+    color: var(--gold);
+    opacity: 0.3;
+    position: absolute;
+    top: -10px;
+    left: 16px;
+    line-height: 1;
+}
+
+.school-quote p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+}
+
+.school-quote strong {
+    color: var(--gold);
+}
+
+/* ---------- TENTANG KAMI ---------- */
+.section-about {
+    background: #fff;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 0.9fr 1.3fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-visual {
+    display: flex;
+    justify-content: center;
+}
+
+.about-logo-frame {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.about-logo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid var(--gold);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    z-index: 1;
+}
+
+.about-glow {
+    position: absolute;
+    inset: -20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%);
+    animation: pulseGlow 4s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.1); opacity: 1; }
+}
+
+.about-text p {
+    font-size: 1rem;
+    color: var(--text-body);
+    margin-bottom: 18px;
+}
+
+.about-lead {
+    font-size: 1.15rem !important;
+    line-height: 1.8;
+}
+
+.about-lead strong {
+    color: var(--maroon);
+}
+
+.about-values {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.value-item {
+    text-align: center;
+    padding: 20px 12px;
+    background: var(--cream);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(110, 14, 40, 0.08);
+    transition: all 0.3s ease;
+}
+
+.value-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-sm);
+    border-color: var(--gold);
+}
+
+.value-num {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 6px;
+    text-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+}
+
+.value-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--maroon);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ---------- VISI & MISI ---------- */
+.section-vision {
+    background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 50%, #2d0510 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.section-vision::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23FFD700' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.vision-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.vision-card {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 0, 0.15);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    transition: all 0.4s ease;
+}
+
+.vision-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 215, 0, 0.3);
+    transform: translateY(-6px);
+}
+
+.vision-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 215, 0, 0.12);
+    border-radius: 16px;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+.vision-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.vision-card h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-bottom: 16px;
+}
+
+.vision-card p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.mission-list {
+    counter-reset: mission;
+    list-style: none;
+}
+
+.mission-list li {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    padding: 12px 0 12px 44px;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mission-list li:last-child {
+    border-bottom: none;
+}
+
+.mission-list li::before {
+    counter-increment: mission;
+    content: counter(mission, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 12px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--gold);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* ---------- PENGURUS ---------- */
+.section-team {
+    background: var(--cream);
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.team-card {
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+}
+
+.team-photo-wrap {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 24px;
+}
+
+.team-photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.team-photo svg,
+.team-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-photo-ring {
+    position: absolute;
+    inset: -6px;
+    border: 3px solid var(--gold);
+    border-radius: 50%;
+    transition: all 0.4s ease;
+}
+
+.team-card:hover .team-photo-ring {
+    inset: -10px;
+    border-color: var(--maroon);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.25);
+}
+
+.team-role {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--maroon);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+}
+
+.team-name {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    cursor: text;
+    min-height: 36px;
+}
+
+.team-name:hover {
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.team-name:focus {
+    outline: 2px solid var(--gold);
+    background: #fff;
+}
+
+.team-name:empty::before {
+    content: attr(data-placeholder);
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.team-note {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* ---------- KEGIATAN ---------- */
+.section-activities {
+    background: #fff;
+}
+
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.activity-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(110, 14, 40, 0.06);
+    transition: all 0.4s ease;
+}
+
+.activity-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.activity-img {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--cream-dark) 0%, var(--cream) 100%);
+}
+
+.activity-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    gap: 8px;
+}
+
+.activity-placeholder svg {
+    width: 40px;
+    height: 40px;
+    opacity: 0.4;
+}
+
+.activity-placeholder span {
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+.activity-body {
+    padding: 24px;
+}
+
+.activity-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--maroon);
+    background: rgba(110, 14, 40, 0.08);
+    padding: 4px 12px;
+    border-radius: 50px;
+    margin-bottom: 12px;
+}
+
+.activity-body h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.activity-body p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ---------- KONTAK ---------- */
+.section-contact {
+    background: var(--cream);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.contact-card {
+    background: #fff;
+    padding: 36px 28px;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(110, 14, 40, 0.06);
+    transition: all 0.4s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--gold);
+}
+
+.contact-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+    border-radius: 50%;
+    color: var(--gold);
+    margin: 0 auto 20px;
+}
+
+.contact-icon svg {
+    width: 26px;
+    height: 26px;
+}
+
+.contact-card h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+.contact-card p {
+    font-size: 0.9rem;
+    color: var(--text-body);
+    line-height: 1.6;
+}
+
+.contact-card a {
+    color: var(--blue);
+    font-weight: 500;
+}
+
+.contact-card a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+    background: linear-gradient(135deg, var(--maroon-dark) 0%, #1a0308 100%);
+    color: #fff;
+    padding: 60px 0 0;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+    flex-wrap: wrap;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.footer-logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--gold);
+}
+
+.footer-brand h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 2px;
+}
+
+.footer-brand p {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.7);
+}
+
+.footer-address {
+    text-align: right;
+    max-width: 400px;
+}
+
+.footer-address p {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+}
+
+.footer-period {
+    margin-top: 8px;
+    color: var(--gold) !important;
+    font-weight: 600;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 24px 0;
+}
+
+.footer-bottom p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.5);
+}
+
+/* ---------- BACK TO TOP ---------- */
+.back-to-top {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 48px;
+    height: 48px;
+    background: var(--maroon);
+    color: var(--gold);
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    z-index: 999;
+    box-shadow: var(--shadow-md);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: var(--gold);
+    color: var(--maroon-dark);
+    transform: translateY(-4px);
+}
+
+.back-to-top svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* ---------- RESPONSIF ---------- */
+@media (max-width: 1024px) {
+    .school-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .school-visual {
+        order: -1;
+    }
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .about-visual {
+        order: -1;
+    }
+    .vision-grid {
+        grid-template-columns: 1fr;
+    }
+    .activities-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 70px 0;
+    }
+    .section-title {
+        font-size: 1.8rem;
+    }
+    .nav-toggle {
+        display: flex;
+    }
+    .nav-menu {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: rgba(110, 14, 40, 0.98);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px 24px 24px;
+        gap: 4px;
+        transform: translateY(-150%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+        box-shadow: var(--shadow-lg);
+        border-top: 1px solid rgba(255, 215, 0, 0.1);
+    }
+    .nav-menu.open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    .nav-link {
+        padding: 14px 20px;
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+    .nav-link:hover {
+        background: rgba(255, 215, 0, 0.1);
+    }
+    .hamburger.open:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.open:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.open:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+    .hero-title {
+        font-size: 2rem;
+    }
+    .motto-text {
+        font-size: 1.4rem;
+        letter-spacing: 4px;
+    }
+    .hero-logos {
+        gap: 20px;
+    }
+    .hero-logo-main {
+        width: 110px;
+        height: 110px;
+    }
+    .hero-logo-school {
+        width: 90px;
+        height: 90px;
+    }
+    .hero-logo-divider {
+        height: 60px;
+    }
+    .school-info {
+        grid-template-columns: 1fr;
+    }
+    .about-values {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+    .team-photo-wrap {
+        width: 140px;
+        height: 140px;
+    }
+    .activities-grid {
+        grid-template-columns: 1fr;
+    }
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-address {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 16px;
+    }
+    .hero-title {
+        font-size: 1.6rem;
+    }
+    .motto-text {
+        font-size: 1.1rem;
+        letter-spacing: 3px;
+        padding: 8px 20px;
+    }
+    .section-title {
+        font-size: 1.5rem;
+    }
+    .team-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+    .team-photo-wrap {
+        width: 120px;
+        height: 120px;
+    }
+    .team-name {
+        font-size: 0.9rem;
+    }
+    .school-logo-wrap {
+        width: 220px;
+        height: 220px;
+    }
+    .about-logo-frame {
+        width: 240px;
+        height: 240px;
+    }
+}
+
+/* ---------- ANIMASI SCROLL ---------- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
